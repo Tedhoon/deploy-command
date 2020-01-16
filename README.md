@@ -146,7 +146,7 @@ sudo apt-get install postgresql
 ## psql cli command
 ```bash
 #관리자 계정 접근
-sudo -u postgres pqsl
+sudo -u postgres psql
 
 # root계정 비밀번호 설정
 postgres=# ALTER USER postgres WITH ENCRYPTED PASSWORD 'password'
