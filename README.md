@@ -18,7 +18,7 @@ sudo apt-get install virtualenv
 cd /경로
 virtualenv -p python3 venv
 source venv/bin/activate
-pip install -r requirments.txt
+pip install -r requirements.txt
 ```
 
 ## runserver Test
