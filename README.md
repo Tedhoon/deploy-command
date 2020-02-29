@@ -89,7 +89,7 @@ http {
 		# ex) server unix:home/ubuntu/dinga6a/dingaproject/uwsgi.sock;
 	}
 	##
-	#upload_max_size 조정가능
+	#client_max_body_size 조정가능
     #server_name(도메인) 설정 가능 => ip접근 시 raise 400
     ...
 ```
