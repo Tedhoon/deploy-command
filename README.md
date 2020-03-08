@@ -83,13 +83,13 @@ sudo apt-get install nginx
 sudo vi /etc/nginx/nginx.conf
 
 http {
-	upstream django
+	upstream django {
         server unix:/home/ubuntu/프로젝트 폴더/uwsgi.sock;
         #.sock은 uwsgi.ini와 같은 경로
 		# ex) server unix:home/ubuntu/dinga6a/dingaproject/uwsgi.sock;
 	}
 	##
-	#client_max_body_size 조정가능
+	#client_max_body_size 
     #server_name(도메인) 설정 가능 => ip접근 시 raise 400
     ...
 ```
