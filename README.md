@@ -177,6 +177,9 @@ sudo /etc/init.d/postgresql restart
 
 ### 수정 및 배포
 ```bash
+git pull
+python manage.py collectstatic
+migration or migrate
 uwsgi --ini uwsgi.ini
-sudo service nginx reload
+sudo service nginx reload #nginx의 설정이 바뀌었을 때만
 ```
