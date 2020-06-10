@@ -73,7 +73,7 @@ uwsgi --ini uwsgi.ini
 ```
 
 ## nginx
-### *nginx.conf, site-enabled, site-available은 서로를 참조함*
+### *nginx.conf, sites-enabled, sites-available은 서로를 참조함*
 ```shell
 sudo apt-get install nginx
 ```
@@ -86,7 +86,7 @@ http {
 	upstream django {
         server unix:/home/ubuntu/프로젝트 폴더/uwsgi.sock;
         #.sock은 uwsgi.ini와 같은 경로
-		# ex) server unix:home/ubuntu/dinga6a/dingaproject/uwsgi.sock;
+		# ex) server unix:home/ubuntu/{경로}/uwsgi.sock;
 	}
 	##
 	#client_max_body_size 
@@ -98,18 +98,20 @@ http {
 
 ### uwsgi pass 및 static, media루트 설정
 ```python
-sudo vi etc/nginx/site-enabled/default
+sudo vi /etc/nginx/sites-enabled/default
 	location / {
 		#
 		#
 		include /etc/nginx/uwsgi_params;
 		uwsgi_pass django;
 	}
-	location /dingastatic/ {
-		alias /home/ubuntu/dinga6a/dingaproject/dingastatic/;
+	location /static/ {
+		alias /home/ubuntu/{static경로}/static/;
 	}
 	location /media/ {
-		alias https://dingastorage.s3.amazonaws.com/media/;
+		alias https:/storage.s3.amazonaws.com/media/;
+		# 위 경로는 s3사용했을 시 경로입니다!
+		# django project 내부의 media폴더를 사용할 시 해당 경로를 입력하시면 됩니다! 
 	}
     ...
 ```
